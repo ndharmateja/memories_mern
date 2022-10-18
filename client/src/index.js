@@ -1,7 +1,18 @@
 import React from "react";
-import ReactDOM from "react-dom";
-
+import { createRoot } from "react-dom/client";
+import { Provider } from "react-redux";
+import { applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
+import { configureStore } from "@reduxjs/toolkit";
+import postReducer from "./reducers/posts";
 import App from "./App";
+
+const store = configureStore(
+  {
+    reducer: { posts: postReducer },
+  },
+  compose(applyMiddleware(thunk))
+);
 
 const root = createRoot(document.getElementById("root"));
 root.render(
