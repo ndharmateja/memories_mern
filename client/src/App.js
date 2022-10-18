@@ -1,7 +1,14 @@
 import React from "react";
+import Form from "./components/Form/Form";
+import Posts from "./components/Posts/Posts";
 
 const App = () => {
-  return <h1>App</h1>;
+  return (
+    <>
+      <Posts />
+      <Form />
+    </>
+  );
 };
 
 export default App;
