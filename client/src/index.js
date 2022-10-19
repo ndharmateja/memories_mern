@@ -6,6 +6,7 @@ import thunk from "redux-thunk";
 import { configureStore } from "@reduxjs/toolkit";
 import postReducer from "./reducers/posts";
 import App from "./App";
+import "./index.css";
 
 const store = configureStore(
   {
