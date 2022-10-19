@@ -17,7 +17,6 @@ const postSlice = createSlice({
 const { setPosts, appendPost } = postSlice.actions;
 
 export const fetchPosts = () => {
-  console.log("here");
   return async (dispatch) => {
     try {
       const { data } = await api.fetchPosts();
