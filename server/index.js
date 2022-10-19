@@ -4,11 +4,13 @@ import mongoose from "mongoose";
 import cors from "cors";
 import * as dotenv from "dotenv";
 import postsRouter from "./routes/posts.js";
+import morgan from "morgan";
 dotenv.default.config();
 
 const app = express();
 
 // Middleware
+app.use(morgan("tiny"));
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
