@@ -27,10 +27,14 @@ export const fetchPosts = () => {
   };
 };
 
-export const createNewPost = () => {
+export const createPost = (post) => {
   return async (dispatch) => {
-    const { data } = await api.createPost();
-    dispatch(appendPost(data));
+    try {
+      const { data } = await api.createPost(post);
+      dispatch(appendPost(post));
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 };
 
