@@ -4,7 +4,7 @@ const postSlice = createSlice({
   name: "posts",
   initialState: [],
   reducers: {
-    fetchAllPosts(state, action) {
+    fetchPosts(state, action) {
       return state;
     },
     createPost(state, action) {
@@ -13,5 +13,5 @@ const postSlice = createSlice({
   },
 });
 
-export const { createPost, fetchAllPosts } = postSlice.actions;
+export const { createPost, fetchPosts } = postSlice.actions;
 export default postSlice.reducer;
