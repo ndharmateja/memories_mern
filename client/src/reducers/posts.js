@@ -71,4 +71,15 @@ export const updatePost = (post) => {
   };
 };
 
+export const deletePost = (id) => {
+  return async (dispatch) => {
+    try {
+      await api.deletePost(id);
+      dispatch(removePost(id));
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+};
+
 export default postSlice.reducer;
