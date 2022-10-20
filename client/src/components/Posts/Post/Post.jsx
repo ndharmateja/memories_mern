@@ -61,8 +61,11 @@ const Post = ({ post }) => {
           {tags.map((tag) => `#${tag}`).join(" ")}
         </Typography>
       </div>
+      <Typography className={classes.title} variant="h5" gutterBottom>
+        {title}
+      </Typography>
       <CardContent>
-        <Typography className={classes.title} variant="h5" gutterBottom>
+        <Typography className={classes.message} variant="h6" gutterBottom>
           {message}
         </Typography>
       </CardContent>
