@@ -26,10 +26,16 @@ const postSlice = createSlice({
         ),
       };
     },
+    removePost(state, action) {
+      return {
+        ...state,
+        data: state.data.filter((post) => post.id !== action.payload),
+      };
+    },
   },
 });
 
-const { setPosts, appendPost, replacePost } = postSlice.actions;
+const { setPosts, appendPost, replacePost, removePost } = postSlice.actions;
 export const { setCurrentId } = postSlice.actions;
 
 export const fetchPosts = () => {
