@@ -54,4 +54,15 @@ export const createPost = (post) => {
   };
 };
 
+export const updatePost = (post) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await api.updatePost(post);
+      dispatch(replacePost(data));
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+};
+
 export default postSlice.reducer;
