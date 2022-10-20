@@ -14,6 +14,7 @@ const postSlice = createSlice({
     appendPost(state, action) {
       return { ...state, posts: [...state.posts, action.payload] };
     },
+    setCurrentId(state, action) {},
   },
 });
 
@@ -34,7 +35,7 @@ export const createPost = (post) => {
   return async (dispatch) => {
     try {
       const { data } = await api.createPost(post);
-      dispatch(appendPost(post));
+      dispatch(appendPost(data));
     } catch (error) {
       console.log(error.message);
     }
