@@ -34,7 +34,7 @@ const Post = ({ post }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const increaseLikes = () => {
+  const handleIncreaseLikes = () => {
     dispatch(updatePost({ ...post, likeCount: post.likeCount + 1 }));
   };
 
@@ -66,7 +66,7 @@ const Post = ({ post }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary" onClick={increaseLikes}>
+        <Button size="small" color="primary" onClick={handleIncreaseLikes}>
           <ThumbUpAltIcon fontSize="small" />
           {`Like ${likeCount}`}
         </Button>
