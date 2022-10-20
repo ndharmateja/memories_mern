@@ -77,7 +77,8 @@ const Post = ({ post }) => {
       <CardActions>
         <Button size="small" color="primary" onClick={handleIncreaseLikes}>
           <ThumbUpAltIcon fontSize="small" />
-          {`Like ${likeCount}`}
+          &nbsp; Like &nbsp;
+          {likeCount}
         </Button>
         <Button size="small" color="primary" onClick={handleDelete}>
           <DeleteIcon fontSize="small" />
