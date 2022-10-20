@@ -35,3 +35,15 @@ export const updatePost = async (request, response) => {
     response.status(409).json({ message: error.message });
   }
 };
+
+export const deletePost = async (request, response) => {
+  try {
+    const {
+      params: { id },
+    } = request;
+    await Post.findByIdAndDelete(id);
+    return response.status(202).end();
+  } catch (error) {
+    response.status(204).json({ message: error.message });
+  }
+};
