@@ -12,12 +12,7 @@ import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import DeleteIcon from "@material-ui/icons/Delete";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment/moment";
-import {
-  appendPost,
-  setCurrentId,
-  setPosts,
-  updatePost,
-} from "../../../reducers/posts";
+import { setCurrentId, updatePost, deletePost } from "../../../reducers/posts";
 import { useDispatch } from "react-redux";
 
 const Post = ({ post }) => {
@@ -36,6 +31,12 @@ const Post = ({ post }) => {
 
   const handleIncreaseLikes = () => {
     dispatch(updatePost({ ...post, likeCount: post.likeCount + 1 }));
+  };
+
+  const handleDelete = () => {
+    if (window.confirm("Are you sure you want to delete?")) {
+      dispatch(deletePost(id));
+    }
   };
 
   return (
@@ -70,7 +71,7 @@ const Post = ({ post }) => {
           <ThumbUpAltIcon fontSize="small" />
           {`Like ${likeCount}`}
         </Button>
-        <Button size="small" color="primary" onClick={() => {}}>
+        <Button size="small" color="primary" onClick={handleDelete}>
           <DeleteIcon fontSize="small" />
           Delete
         </Button>
