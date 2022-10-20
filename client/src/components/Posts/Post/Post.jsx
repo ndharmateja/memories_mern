@@ -12,11 +12,22 @@ import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import DeleteIcon from "@material-ui/icons/Delete";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment/moment";
+import { appendPost, setCurrentId, setPosts } from "../../../reducers/posts";
+import { useDispatch } from "react-redux";
 
 const Post = ({ post }) => {
-  const { title, tags, createdAt, selectedFile, message, creator, likeCount } =
-    post;
+  const {
+    title,
+    tags,
+    createdAt,
+    selectedFile,
+    message,
+    creator,
+    likeCount,
+    id,
+  } = post;
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   return (
     <Card className={classes.card}>
@@ -26,7 +37,11 @@ const Post = ({ post }) => {
         <Typography variant="body2">{moment(createdAt).fromNow()}</Typography>
       </div>
       <div className={classes.overlay2}>
-        <Button style={{ color: "white" }} size="small" onClick={() => {}}>
+        <Button
+          style={{ color: "white" }}
+          size="small"
+          onClick={() => dispatch(setCurrentId(id))}
+        >
           <MoreHorizIcon fontSize="medium" />
         </Button>
       </div>
