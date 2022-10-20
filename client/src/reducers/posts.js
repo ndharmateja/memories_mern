@@ -3,13 +3,16 @@ import * as api from "../api";
 
 const postSlice = createSlice({
   name: "posts",
-  initialState: [],
+  initialState: {
+    currentId: null,
+    data: [],
+  },
   reducers: {
-    setPosts(posts, action) {
-      return action.payload;
+    setPosts(state, action) {
+      return { ...state, data: action.payload };
     },
-    appendPost(posts, action) {
-      return [...posts, action.payload];
+    appendPost(state, action) {
+      return { ...state, posts: [...state.posts, action.payload] };
     },
   },
 });
