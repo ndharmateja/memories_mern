@@ -14,11 +14,14 @@ const postSlice = createSlice({
     appendPost(state, action) {
       return { ...state, data: [...state.data, action.payload] };
     },
-    setCurrentId(state, action) {},
+    setCurrentId(state, action) {
+      return { ...state, currentId: action.payload };
+    },
   },
 });
 
 const { setPosts, appendPost } = postSlice.actions;
+export const { setCurrentId } = postSlice.actions;
 
 export const fetchPosts = () => {
   return async (dispatch) => {
