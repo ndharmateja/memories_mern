@@ -21,3 +21,17 @@ export const createPost = async (request, response) => {
     response.status(409).json({ message: error.message });
   }
 };
+
+export const updatePost = async (request, response) => {
+  try {
+    const {
+      body,
+      params: { id },
+    } = request;
+
+    const updatedPost = await Post.findByIdAndUpdate(id, body, { new: true });
+    return response.status(209).json(updatedPost);
+  } catch (error) {
+    response.status(409).json({ message: error.message });
+  }
+};
