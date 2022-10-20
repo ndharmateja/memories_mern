@@ -1,0 +1,6 @@
+PATCH http://localhost:3003/posts/63500459e214a900b3609d8d HTTP/1.1
+content-type: application/json
+
+{
+    "likeCount": 100
+}
