@@ -12,7 +12,7 @@ const postSlice = createSlice({
       return { ...state, data: action.payload };
     },
     appendPost(state, action) {
-      return { ...state, posts: [...state.posts, action.payload] };
+      return { ...state, data: [...state.data, action.payload] };
     },
     setCurrentId(state, action) {},
   },
