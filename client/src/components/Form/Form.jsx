@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useStyles from "./styles";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from "react-file-base64";
-import { useDispatch } from "react-redux";
-import { createPost } from "../../reducers/posts";
+import { useDispatch, useSelector } from "react-redux";
+import { createPost, setCurrentId, updatePost } from "../../reducers/posts";
 
 const Form = () => {
   const classes = useStyles();
@@ -17,21 +17,34 @@ const Form = () => {
     selectedFile: "",
   });
 
+  const currentPost = useSelector(({ posts: { currentId, data } }) => {
+    return currentId ? data.find((post) => post.id === currentId) : null;
+  });
   const [postData, setPostData] = useState(getInitialData());
+
+  useEffect(() => {
+    if (currentPost) {
+      setPostData({ ...currentPost, tags: currentPost.tags.join(",") });
+    } else {
+      setPostData(getInitialData());
+    }
+  }, [currentPost]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      createPost({
-        ...postData,
-        tags: postData.tags.split(" ").join("").split(","),
-      })
-    );
+    const newPostData = {
+      ...postData,
+      tags: postData.tags.split(" ").join("").split(","),
+    };
+
+    if (currentPost) dispatch(updatePost(newPostData));
+    else dispatch(createPost(newPostData));
+
     clear();
   };
 
   const clear = (e) => {
-    setPostData(getInitialData());
+    dispatch(setCurrentId(null));
   };
 
   return (
@@ -100,7 +113,7 @@ const Form = () => {
           type="submit"
           variant="contained"
         >
-          Create
+          {currentPost ? "Update" : "Create"}
         </Button>
         <Button
           className={classes.buttonSubmit}
