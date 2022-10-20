@@ -65,7 +65,12 @@ const Post = ({ post }) => {
         {title}
       </Typography>
       <CardContent>
-        <Typography className={classes.message} variant="h6" gutterBottom>
+        <Typography
+          className={classes.message}
+          variant="body2"
+          color="textSecondary"
+          component="p"
+        >
           {message}
         </Typography>
       </CardContent>
