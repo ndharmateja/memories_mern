@@ -17,10 +17,19 @@ const postSlice = createSlice({
     setCurrentId(state, action) {
       return { ...state, currentId: action.payload };
     },
+    replacePost(state, action) {
+      const updatedPost = action.payload;
+      return {
+        ...state,
+        data: state.data.map((post) =>
+          updatedPost.id === post.id ? updatedPost : post
+        ),
+      };
+    },
   },
 });
 
-const { setPosts, appendPost } = postSlice.actions;
+const { setPosts, appendPost, replacePost } = postSlice.actions;
 export const { setCurrentId } = postSlice.actions;
 
 export const fetchPosts = () => {
