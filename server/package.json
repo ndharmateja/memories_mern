@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "node index.js"
+    "dev": "nodemon index.js",
+    // https://stackoverflow.com/a/67455220/9430523
+    "deploy": "cd .. && git subtree push --prefix server heroku master"
   },
   "keywords": [],
   "author": "",
