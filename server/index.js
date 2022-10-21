@@ -18,6 +18,12 @@ app.use(cors());
 
 // Routers
 app.use("/posts", postsRouter);
+app.get("/", (request, response) => {
+  response.send("Welcome to memories API");
+});
+app.use((request, response) => {
+  response.send("No such route found.");
+});
 
 const port = process.env.PORT || 3003;
 const mongoUri = process.env.MONGODB_URI;
