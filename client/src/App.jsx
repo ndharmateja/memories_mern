@@ -29,19 +29,22 @@ const App = () => {
         />
       </AppBar>
       <Grow in>
-        <Grid
-          container
-          justifyContent="space-between"
-          alignItems="stretch"
-          spacing={3}
-        >
-          <Grid item xs={12} sm={7}>
-            <Posts />
+        <Container>
+          <Grid
+            className={classes.mainContainer}
+            container
+            justifyContent="space-between"
+            alignItems="stretch"
+            spacing={3}
+          >
+            <Grid item xs={12} sm={7}>
+              <Posts />
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Form />
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={4}>
-            <Form />
-          </Grid>
-        </Grid>
+        </Container>
       </Grow>
     </Container>
   );
