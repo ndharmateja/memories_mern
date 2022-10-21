@@ -37,14 +37,18 @@ const Form = () => {
       tags: postData.tags.split(" ").join("").split(","),
     };
 
-    if (currentPost) dispatch(updatePost(newPostData));
-    else dispatch(createPost(newPostData));
+    if (currentPost) {
+      dispatch(updatePost(newPostData));
+    } else {
+      dispatch(createPost(newPostData));
+    }
 
     clear();
   };
 
-  const clear = (e) => {
+  const clear = () => {
     dispatch(setCurrentId(null));
+    setPostData(getInitialData());
   };
 
   return (
@@ -100,6 +104,7 @@ const Form = () => {
         />
         <div className={classes.fileInput}>
           <FileBase
+            value={postData.selectedFile}
             type="file"
             multiple={false}
             onDone={({ base64 }) =>
