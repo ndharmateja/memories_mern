@@ -1,7 +1,9 @@
 import axios from "axios";
 
-export const fetchPosts = () => axios.get(`/posts`);
-export const createPost = (newPost) => axios.post(`/posts`, newPost);
+const baseUrl = "https://memories-mern-jsm-project.herokuapp.com";
+
+export const fetchPosts = () => axios.get(`${baseUrl}/posts`);
+export const createPost = (newPost) => axios.post(`${baseUrl}/posts`, newPost);
 export const updatePost = (updatedPost) =>
-  axios.patch(`/posts/${updatedPost.id}`, updatedPost);
-export const deletePost = (id) => axios.delete(`/posts/${id}`);
+  axios.patch(`${baseUrl}/posts/${updatedPost.id}`, updatedPost);
+export const deletePost = (id) => axios.delete(`${baseUrl}/posts/${id}`);
